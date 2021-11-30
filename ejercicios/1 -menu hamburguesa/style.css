@@ -1,0 +1,114 @@
+/* CSS BASE*/
+:root{
+--main-font:sans-serif;
+--font-size:16px;
+--main-color:#f7df1e;
+--second-color:#222;
+--main-modal-color:rgba(247,222,30,0.85);
+--second-modal-color:rgba(34,34,34,0.85);
+--conntainer-widh:1200px;
+}
+html{
+    box-sizing: border-box;
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+    scroll-behavior: smooth;   /*hace el desplazamiento a la seccion mas lenta*/
+}
+
+*,
+*:before,
+*:after{
+    box-sizing: inherit;    /*todos los elementos del html heredan el box-sizing*/
+}
+
+body{
+    margin: 0;
+    overflow-x: hidden; /*todo lo que sobresalga en x se esconde*/
+}
+img{
+    max-width: 100%;
+    height: auto;   /*para que la imagen se adapte a la maxima anchura del cont*/
+}
+
+
+/****** para el menu burger******/
+
+.header{
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color:var(--second-color);
+}
+.header h1{
+    margin: 0 auto;
+    text-align: center;
+}
+.section{
+    padding: 2rem;
+    padding-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--container-width);  /*el maximo width es el que estableci arriba*/
+    min-height:100vh; /*cada seccion va a ocupar un minimo de 100vh*/
+    text-align: center;
+}
+
+.panel-btn{
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;       /* lo hago flex para acomodar bien en el medio las 3 rayitas */
+    justify-content:center;
+    align-items: center;
+    background-color: var(--main-color);
+}
+.panel{
+    position: fixed;
+    z-index: 998;   /*con esto hago que este un nivel mas abajo que el boton*/
+    top: 0;
+    bottom: 0;
+    right: 0;  /*con top right bottom y lef 0 le  digo que abarque toda la pantalla*/
+    left: 0;
+    width: 100%;
+    background-color: var(--second-modal-color);
+    transition: transform .3s ease;   /* esto le da el efecto de desplazamiento cuando tocamos el boton*/
+    /*desde arriba*/
+    /*transform: translate(0,-100%); /*lo pongo fuera de la pantalla*/
+    /*desde izquierda */
+    /*transform: translate(-100%,0);
+    /*derecha*/
+    transform: translate(100%,0);
+}
+.panel.is-active{
+    transform: translate(0,0); /*cuando esta activo vuelve al lugar inciial*/
+}
+
+.menu{
+    width:inherit;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    text-align:center;
+    align-items: center;
+}
+.menu a{
+    padding: 2rem;
+    width: inherit;
+    display: block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--main-color);
+    transition: all 0.3s ease;    /* en donde se aplica, tiempo de uso y forma*/
+}
+.menu a:hover{
+    font-weight: bold;
+    color: var(--second-color);
+    background-color: var(--main-modal-color);
+}

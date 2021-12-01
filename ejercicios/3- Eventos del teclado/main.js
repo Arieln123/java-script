@@ -1,5 +1,6 @@
 import hamburgerMenu from "./menuHamburguesa.js"
 import {digitalClock,alarm} from "./reloj.js";
+import { shortcuts } from "./teclado.js";
 const d=document;
 
 
@@ -8,3 +9,7 @@ d.addEventListener("DOMContentLoaded",(e)=>{
     digitalClock("#reloj","#activar-reloj","#desactivar-reloj"); //paso los 3 parametros para que nade el reloj
     alarm("assets/Bioalarma.mp3","#activar-alarma","#desactivar-alarma");
 });
+
+d.addEventListener("keydown",(e)=>{
+    shortcuts(e);
+})
